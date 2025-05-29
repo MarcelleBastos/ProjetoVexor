@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=576, initial-scale=1.0" />
     <title>Rastrear Pedido - Vexor</title>
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,20 +18,21 @@
     <script src="js/accessibility.js" defer></script>
     <script src="js/navbar.js" defer></script>
     <script src="js/footer.js" defer></script>
-    <script src="js/tracking.js""></script>
+    <script src="js/tracking.js" defer></script>
     <style>
         body {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
+
         .tracking-content {
             flex-grow: 1;
         }
+
         .tracking-header h1 {
             color: var(--primary-color, #0d6efd);
         }
-        #trackButton {
     </style>
 </head>
 
@@ -45,12 +46,14 @@
             <div class="col-md-8 col-lg-6">
                 <div class="tracking-header text-center mb-4">
                     <h1>Rastrear seu Pedido</h1>
-                    <p class="lead">Insira o código de rastreamento fornecido no momento da compra para verificar o status do seu pedido.</p>
+                    <p class="lead">Insira o código de rastreamento fornecido no momento da compra para verificar o
+                        status do seu pedido.</p>
                 </div>
 
                 <form id="trackingForm" class="mb-4">
                     <div class="input-group input-group-lg mb-3">
-                        <input type="text" class="form-control" id="trackingCode" name="trackingCode" placeholder="Ex: VEXOR123XYZ" aria-label="Código de Rastreamento" required>
+                        <input type="text" class="form-control" id="trackingCode" name="trackingCode"
+                            placeholder="Ex: VEXOR123XYZ" aria-label="Código de Rastreamento" required>
                         <button class="btn btn-primary" type="submit" id="trackButton">
                             <i class="bi bi-search me-1"></i>Rastrear
                         </button>
@@ -67,16 +70,17 @@
 
                 <!-- Área de Resultados do Rastreamento -->
                 <div id="trackingResult" class="mt-4" style="display: none;">
-                    <h3 class="text-center mb-3">Status do Pedido: <span id="resultOrderId" class="text-primary"></span></h3>
+                    <h3 class="text-center mb-3">Status do Pedido: <span id="resultOrderId" class="text-primary"></span>
+                    </h3>
                     <div class="card shadow-sm">
                         <div class="card-body">
                             <p><strong>Status:</strong> <span id="resultStatus" class="fw-bold"></span></p>
                             <p><strong>Última Atualização:</strong> <span id="resultLastUpdate"></span></p>
                             <p><strong>Localização Estimada:</strong> <span id="resultLocation"></span></p>
-                            
+
                             <h5 class="mt-4">Histórico de Eventos:</h5>
                             <ul id="resultHistory" class="list-group list-group-flush">
-                                
+
                                 <li class="list-group-item d-flex justify-content-between align-items-start">
                                     <div class="ms-2 me-auto">
                                         <div class="fw-bold">Pedido em separação no estoque</div>
@@ -84,7 +88,7 @@
                                     </div>
                                     <span class="badge bg-primary rounded-pill">25/05/2024 10:00</span>
                                 </li>
-                                
+
                             </ul>
                         </div>
                     </div>
@@ -93,7 +97,8 @@
                 <!-- Área de Erro -->
                 <div id="trackingError" class="alert alert-danger mt-4" style="display: none;" role="alert">
                     <i class="bi bi-exclamation-triangle-fill me-2"></i>
-                    <strong>Ops!</strong> <span id="trackingErrorMessage">Não foi possível encontrar informações para o código fornecido. Verifique o código e tente novamente.</span>
+                    <strong>Ops!</strong> <span id="trackingErrorMessage">Não foi possível encontrar informações para o
+                        código fornecido. Verifique o código e tente novamente.</span>
                 </div>
 
             </div>
@@ -103,4 +108,5 @@
     <!-- JS Footer -->
     <div id="footer-container"></div>
 </body>
+
 </html>

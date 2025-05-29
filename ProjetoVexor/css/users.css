@@ -1,92 +1,206 @@
-@media (min-width: 768px) {
-  .user-panel-wrapper {
-    padding-top: 100px;
-    /* Ajuste este valor com base na altura da sua navbar */
-  }
-}
+/* css/users.css */
 
 /* Painel de Usuário - Vexor */
+.user-panel-wrapper {
+  padding-top: 130px;
+  /* Espaço para as duas navbars fixas em desktop */
+  /* Ajuste este valor com base na altura combinada das suas navbars */
+  min-height: 100vh;
+  /* Garante que o wrapper ocupe pelo menos a altura da tela */
+}
+
 /* Sidebar mobile por padrão em cima */
 .sidebar {
-  background-color: #fff;
+  background-color: var(--primary-bg-color);
   width: 100%;
   padding: 20px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .sidebar h4 {
-  color: #1873bc;
+  font-family: 'Orbitron', sans-serif;
+  /* Fonte temática */
+  color: var(--secondary-bg-color);
   font-weight: bold;
   margin-bottom: 20px;
+  font-size: 22px;
+  /* Ajuste */
 }
 
 .sidebar .nav {
   flex-direction: row;
+  /* Mobile: links lado a lado com wrap */
   flex-wrap: wrap;
   gap: 10px;
 }
 
 .sidebar .nav-link {
   font-weight: 500;
-  color: #333;
-  padding: 8px 12px;
-  background-color: #e9f2fc;
-  border-radius: 5px;
+  color: var(--text-color);
+  padding: 8px 15px;
+  background-color: var(--bg-color);
+  /* Fundo sutilmente diferente do painel */
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
   text-align: center;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  /* Ajuste */
 }
 
 .sidebar .nav-link.active,
 .sidebar .nav-link:hover {
-  background-color: #cde4fb;
-  color: #1873bc;
+  background-color: var(--secondary-bg-color);
+  color: white;
+  /* Texto branco para contraste */
+  border-color: var(--secondary-bg-color);
 }
 
-/* Conteúdo principal abaixo da sidebar */
+.sidebar .nav-link.text-danger:hover {
+  /* Para o botão Sair */
+  background-color: var(--error-color);
+  border-color: var(--error-color);
+  color: white !important;
+  /* Força a cor do texto */
+}
+
+
+/* Conteúdo principal abaixo da sidebar (mobile) ou ao lado (desktop) */
 .main-content {
   padding: 20px;
 }
 
-/* Cartões e formulários */
-.config-container {
-  background-color: #ffffff;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+.main-content>h2 {
+  /* Estilo para o H2 de boas-vindas */
+  color: var(--text-color);
+  font-size: 28px;
+  /* Ajuste */
+  margin-bottom: 10px;
 }
 
-.form-label {
-  font-weight: 500;
+.main-content>p {
+  /* Estilo para o parágrafo de boas-vindas */
+  color: var(--muted-text-color);
+  font-size: 16px;
 }
+
+
+/* Cartões e formulários dentro do painel (ex: config.html) */
+.main-content .config-container {
+  /* Classe específica para o conteúdo carregado */
+  background-color: var(--primary-bg-color);
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(var(--text-color-rgb), 0.07);
+  border: 1px solid var(--border-color);
+}
+
+.main-content .config-container h3 {
+  color: var(--text-color);
+  font-size: 20px;
+  /* Ajuste */
+  margin-bottom: 20px;
+  /* Ajuste */
+}
+
 
 /* Versão desktop */
 @media (min-width: 768px) {
-  .container-fluid {
+  .user-panel-wrapper {
     display: flex;
+    /* Ativa layout flex para sidebar e main content */
   }
 
   .sidebar {
     width: 250px;
-    height: calc(100vh - 100px);
-    border-right: 1px solid #ddd;
+    height: calc(100vh - 130px);
+    /* Altura da viewport menos altura das navbars */
+    border-right: 1px solid var(--border-color);
     border-bottom: none;
+    /* Remove borda inferior do mobile */
     position: fixed;
+    /* Sidebar fixa na lateral */
     left: 0;
-    top: 100px;
+    top: 130px;
+    /* Abaixo das navbars */
     overflow-y: auto;
+    /* Scroll se o conteúdo for maior */
   }
 
   .main-content {
     margin-left: 250px;
+    /* Empurra o conteúdo principal para depois da sidebar */
     padding: 40px;
-    width: 100%;
+    width: calc(100% - 250px);
+    /* Ocupa o restante da largura */
   }
 
   .sidebar .nav {
     flex-direction: column;
+    /* Links empilhados verticalmente */
     gap: 0;
+    /* Remove gap do mobile se não desejar */
   }
 
   .sidebar .nav-link {
     margin-bottom: 10px;
+    /* Espaçamento entre links verticais */
+    text-align: left;
+    /* Alinha texto à esquerda */
+  }
+}
+
+/* Ajustes finos para responsividade em telas menores que o breakpoint md (768px) */
+@media (max-width: 767.98px) {
+  .user-panel-wrapper {
+    padding-top: 20px;
+    /* Menor padding superior se as navbars não forem fixas em mobile */
+  }
+}
+
+
+@media (max-width: 576px) {
+  .user-panel-wrapper {
+    padding-top: 70px;
+    /* padding-top original de styles.css */
+  }
+
+  .sidebar {
+    padding: 15px;
+  }
+
+  .sidebar h4 {
+    font-size: 21px;
+    margin-bottom: 15px;
+  }
+
+  .sidebar .nav {
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .sidebar .nav-link {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  .main-content {
+    padding: 15px;
+  }
+
+  .main-content>h2 {
+    font-size: 22px;
+  }
+
+  .main-content>p {
+    font-size: 14px;
+  }
+
+  .main-content .config-container {
+    padding: 15px;
+  }
+
+  .main-content .config-container h3 {
+    font-size: 18px;
   }
 }

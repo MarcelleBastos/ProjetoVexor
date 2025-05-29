@@ -1,6 +1,6 @@
 .contact-page-container {
-  padding-top: 2rem;
-  padding-bottom: 4rem;
+  padding-top: 32px;
+  padding-bottom: 64px;
 }
 
 .contact-header h1 {
@@ -15,14 +15,14 @@
   padding: 25px;
   background-color: var(--primary-bg-color);
   border-radius: 12px;
-  box-shadow: 0 4px 15px var(--card-shadow-light);
-  border: 1px solid transparent;
+  box-shadow: 0 4px 15px rgba(var(--text-color-rgb), 0.07);
+  border: 1px solid var(--border-color);
   transition: all 0.3s ease;
 }
 
 .contact-info-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 20px var(--card-shadow-light);
+  box-shadow: 0 6px 20px rgba(var(--text-color-rgb), 0.1);
   border-color: var(--secondary-bg-color);
 }
 
@@ -32,37 +32,40 @@
   height: 60px;
   background-color: var(--secondary-bg-color);
   color: #fff;
-  border-radius: 50%;
+  border-radius: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
+  font-size: 29px;
 }
 
 .contact-info-card .info-text h5 {
   font-weight: 700;
   color: var(--text-color);
+  font-size: 18px;
 }
 
 .contact-info-card .info-text p {
   color: var(--muted-text-color);
   margin-bottom: 0;
+  font-size: 14px;
 }
 
 .contact-info-card .info-text a {
   text-decoration: none;
   color: var(--secondary-bg-color);
   transition: color 0.2s;
+  font-size: 14px;
 }
 
 .contact-info-card .info-text a:hover {
   text-decoration: underline;
-  color: #0c5f9f;
+  filter: brightness(1.2);
 }
 
 /* Ícones de redes sociais */
 .social-icons-contact a {
-  font-size: 1.5rem;
+  font-size: 24px;
   margin-right: 15px;
   color: var(--muted-text-color);
   transition: color 0.3s ease, transform 0.3s ease;
@@ -77,8 +80,8 @@
 .form-wrapper {
   background-color: var(--primary-bg-color);
   border-radius: 12px;
-  box-shadow: 0 4px 20px var(--card-shadow-light);
-  border: 1px solid transparent;
+  box-shadow: 0 4px 20px rgba(var(--text-color-rgb), 0.07);
+  border: 1px solid var(--border-color);
 }
 
 /* Garante que o textarea tenha uma altura mínima e possa ser redimensionado */
@@ -88,20 +91,17 @@
 }
 
 /* Adaptação para Tema Escuro */
-[data-theme="dark"] .contact-info-card {
-  box-shadow: 0 4px 15px var(--card-shadow-dark);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-[data-theme="dark"] .contact-info-card:hover {
-  box-shadow: 0 6px 20px var(--card-shadow-dark);
+[data-theme="dark"] .contact-info-card:hover,
+[data-theme="dark"] .form-wrapper {
+  border-color: var(--secondary-bg-color);
+  /* Hover no card */
 }
 
 [data-theme="dark"] .form-wrapper {
-  background-color: var(--card-bg-dark);
-  box-shadow: 0 4px 20px var(--card-shadow-dark);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-color: var(--border-color);
+  /* Borda normal do form no dark theme */
 }
+
 
 /* Botão de Envio */
 #contact-submit {
@@ -109,17 +109,76 @@
   border-color: var(--secondary-bg-color);
   font-weight: 600;
   transition: all 0.3s ease;
+  font-size: 16px;
+  padding: 10px 15px;
 }
 
 #contact-submit:hover {
-  background-color: #0c5f9f;
-  border-color: #0c5f9f;
+  filter: brightness(1.15);
+  border-color: var(--secondary-bg-color);
   transform: scale(1.02);
 }
 
 /* Responsividade */
-@media (max-width: 991px) {
+@media (max-width: 576px) {
   .contact-page-container {
-    padding-top: 1rem;
+    padding-top: 16px;
+    padding-bottom: 40px;
+  }
+
+  .contact-header h1 {
+    font-size: 26px;
+  }
+
+  .contact-header .lead {
+    font-size: 14px;
+  }
+
+  .contact-info-card {
+    gap: 15px;
+    padding: 18px;
+  }
+
+  .contact-info-card .icon-circle {
+    width: 48px;
+    height: 48px;
+    font-size: 22px;
+    border-radius: 24px;
+  }
+
+  .contact-info-card .info-text h5 {
+    font-size: 15px;
+  }
+
+  .contact-info-card .info-text p,
+  .contact-info-card .info-text a {
+    font-size: 13px;
+  }
+
+  .social-icons-contact a {
+    font-size: 20px;
+    margin-right: 12px;
+  }
+
+  .form-wrapper {
+    padding: 18px 15px;
+  }
+
+  .form-wrapper h3 {
+    font-size: 19px;
+    margin-bottom: 18px;
+  }
+
+  .form-label {
+    font-size: 14px;
+  }
+
+  #contact-comentario {
+    min-height: 100px;
+  }
+
+  #contact-submit {
+    font-size: 15px;
+    padding: 9px 16px;
   }
 }

@@ -3,14 +3,15 @@
 /* Promo Cards - Estilo geral */
 .promo-card {
   width: 288px;
-  background-color: var(--primary-bg-color, #212529);
-  color: var(--text-color, #fff);
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  background-color: var(--primary-bg-color);
+  color: var(--text-color);
+  border-radius: 12px;
+  /* box-shadow removido para ser controlado pela borda animada ou hover */
   transition: transform 0.3s, box-shadow 0.3s;
   position: relative;
   z-index: 1;
-  padding: 2px; 
+  padding: 2px;
+  /* Espaço para a borda animada */
 }
 
 .promo-card::before {
@@ -20,57 +21,72 @@
   left: 0;
   right: 0;
   bottom: 0;
-  border-radius: inherit; 
-  padding: 2px; 
+  border-radius: inherit;
+  /* Herda o border-radius do .promo-card */
+  padding: 2px;
+  /* Grossura da "borda falsa" que será o gradiente */
   background: linear-gradient(60deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-  background-size: 300% 300%; 
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
+  background-size: 300% 300%;
+  /* Para a animação do gradiente */
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    /* Mantém o conteúdo visível */
     linear-gradient(#fff 0 0);
-  mask: 
-    linear-gradient(#fff 0 0) content-box, 
+  /* Cobre tudo */
+  mask:
+    linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: destination-out;
-  mask-composite: subtract; 
+  /* Subtrai o conteúdo, deixando só a "borda" */
+  mask-composite: subtract;
   animation: animatedRgbBorder 3s linear infinite;
-  z-index: -1; 
-}
-
-.promo-card > *:not(::before) { 
-  position: relative; 
-  z-index: 2; 
+  z-index: -1;
+  /* Atrás do conteúdo do card */
 }
 
 .promo-card-content-wrapper {
-    background-color: var(--primary-bg-color); 
-    color: var(--text-color);
-    border-radius: calc(10px - 2px); 
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  background-color: var(--primary-bg-color);
+  /* Cor de fundo interna do card */
+  color: var(--text-color);
+  border-radius: calc(12px - 2px);
+  /* Raio interno (total - padding da borda) */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* Garante que o conteúdo não escape do raio interno */
 }
-[data-theme="dark"] .promo-card-content-wrapper {
-    background-color: var(--card-bg-dark); 
-}
+
+/* [data-theme="dark"] .promo-card-content-wrapper já usa --primary-bg-color do tema escuro */
 
 
 @keyframes animatedRgbBorder {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
 }
 
 .promo-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.5); 
+  transform: translateY(-5px) scale(1.03);
+  /* Efeito de levantar e aumentar */
+  /* A sombra no hover pode ser mais sutil ou vir da própria borda animada */
+  box-shadow: 0 0 25px rgba(var(--secondary-bg-color-rgb), 0.4);
 }
+
+[data-theme="dark"] .promo-card:hover {
+  box-shadow: 0 0 30px rgba(var(--secondary-bg-color-rgb), 0.6);
+  /* Sombra mais intensa no dark */
+}
+
 
 /* Área controlada da imagem */
 .image-container {
@@ -80,94 +96,158 @@
   justify-content: center;
   padding: 10px;
   overflow: hidden;
-  border-bottom: 1px solid var(--muted-text-color, #444);
+  border-bottom: 1px solid var(--border-color);
   position: relative;
 }
 
 .image-container img {
   max-height: 100%;
   width: auto;
+  /* Para manter a proporção */
+  max-width: 100%;
+  /* Para não exceder o container */
   transition: transform 0.4s ease;
+  background-color: white;
+  border-radius: 8px;
+  padding: 5px;
 }
 
 /* Zoom suave na imagem */
-.image-container:hover img {
+.promo-card:hover .image-container img {
   transform: scale(1.08);
 }
 
 /* Estilo de Texto */
-.card-title {
+.product-name-promo {
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
   margin-top: 10px;
+  color: var(--text-color);
+  height: 48px;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
-.card-text {
+.price-area {
+  margin-top: auto;
+  /* Empurra para baixo */
+  padding-top: 10px;
+  /* Espaço acima dos preços */
+  color: var(--text-color);
+}
+
+.price-original-promo {
   font-size: 14px;
-  margin: 10px 0;
+  color: var(--muted-text-color);
+  text-decoration: line-through;
+}
+
+.price-promo-promo {
+  font-size: 22px;
+  color: var(--secondary-bg-color);
+  /* Cor de destaque para preço promo */
+  font-weight: bold;
 }
 
 /* Skeleton enquanto carrega */
 .skeleton-card {
   width: 288px;
-  height: 320px; /* Altura total do card, incluindo a borda implícita */
-  background-color: #e0e0e0; /* Cor de fundo do skeleton */
-  border-radius: 10px;
+  /* height: 380px; */
+  /* Altura total aproximada, ajuste conforme o conteúdo final */
+  background-color: var(--primary-bg-color);
+  /* Fundo do skeleton */
+  border: 1px solid var(--border-color);
+  /* Borda sutil */
+  border-radius: 12px;
   overflow: hidden;
-  padding: 2px; /* Simula o padding para a borda falsa */
+  /* padding: 2px; */
+  /* Removido, não precisa simular a borda aqui */
 }
-.skeleton-card-content { /* Novo wrapper para o conteúdo do skeleton */
-    background-color: #e9ecef; /* Cor de fundo interna do skeleton */
-    border-radius: calc(10px - 2px);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+
+.skeleton-card-content {
+  border-radius: calc(12px - 1px);
+  /* Ajuste se tiver padding no card principal */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
+
 .skeleton-image {
-  height: 250px; /* Altura da área da imagem */
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); /* Gradiente mais suave */
-  background-size: 400% 100%;
-  animation: shimmer 1.5s infinite linear; /* Animação mais suave */
-  /* border-bottom: 1px solid #ddd; */ /* Linha sutil abaixo da imagem no skeleton */
-}
-.skeleton-text-container { /* Container para os textos do skeleton */
-    padding: 10px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.skeleton-text {
-  width: 80%; /* Ajuste de largura */
-  height: 20px;
-  margin: 5px auto; /* Ajuste de margem */
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  height: 250px;
+  background: rgba(var(--muted-text-color-rgb), 0.1);
+  /* Cor base do shimmer */
+  /* Gradiente para animação shimmer */
+  background: linear-gradient(90deg,
+      rgba(var(--muted-text-color-rgb), 0.1) 25%,
+      rgba(var(--muted-text-color-rgb), 0.2) 50%,
+      rgba(var(--muted-text-color-rgb), 0.1) 75%);
   background-size: 400% 100%;
   animation: shimmer 1.5s infinite linear;
-  border-radius: 4px; /* Bordas arredondadas para o texto */
+  border-bottom: 1px solid var(--border-color);
+  /* Linha sutil abaixo da imagem no skeleton */
 }
+
+.skeleton-text-container {
+  padding: 16px;
+  /* Mesmo padding do card-body real */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Centraliza textos se houver espaço */
+}
+
+.skeleton-text {
+  width: 80%;
+  height: 20px;
+  margin-bottom: 10px;
+  /* Ajuste de margem */
+  border-radius: 4px;
+  background: linear-gradient(90deg,
+      rgba(var(--muted-text-color-rgb), 0.1) 25%,
+      rgba(var(--muted-text-color-rgb), 0.2) 50%,
+      rgba(var(--muted-text-color-rgb), 0.1) 75%);
+  background-size: 400% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
 .skeleton-text.short {
-  width: 50%; /* Ajuste de largura para texto curto */
-  height: 16px; /* Altura menor para texto curto */
+  width: 60%;
+  height: 16px;
 }
 
 @keyframes shimmer {
   0% {
-    background-position: -1000px 0; /* Posição inicial maior para melhor efeito */
+    background-position: -1000px 0;
   }
+
   100% {
-    background-position: 1000px 0; /* Posição final maior */
+    background-position: 1000px 0;
   }
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
-  .promo-card {
-    width: 256px;
-  }
+
+  .promo-card,
   .skeleton-card {
     width: 256px;
+    /* Ajuste para telas menores */
+  }
+
+  .limit-on-mobile>*:not(:nth-child(-n+4)) {
+    /* Mostra até 4 itens */
+    display: none !important;
+  }
+
+  .limit-on-mobile>*:nth-child(-n+4) {
+    display: flex !important;
+    /* Garante que são flex items se o pai for flex */
   }
 }
 
@@ -176,36 +256,61 @@
   display: inline-block;
   animation: flameFlicker 1s infinite alternate;
 }
+
 @keyframes flameFlicker {
   0% {
     transform: scale(1) rotate(0deg);
     text-shadow: 0 0 5px orange, 0 0 15px red, 0 0 25px yellow;
   }
+
   50% {
     transform: scale(1.1) rotate(-2deg);
     text-shadow: 0 0 10px orange, 0 0 20px red, 0 0 30px yellow;
   }
+
   100% {
     transform: scale(1) rotate(2deg);
     text-shadow: 0 0 5px orange, 0 0 15px red, 0 0 25px yellow;
   }
 }
 
-/* Cards promocionais mobile */
-@media (max-width: 768px) {
-  .limit-on-mobile > * {
-    display: none !important;
+@media (max-width: 576px) {
+
+  .promo-card,
+  .skeleton-card {
+    width: 100%;
+    /* Ocupa toda a largura da coluna */
+    max-width: 260px;
+    /* Limite máximo em telas muito pequenas */
+    margin-left: auto;
+    margin-right: auto;
   }
-  .limit-on-mobile[data-limit="1"] > *:nth-child(-n+1),
-  .limit-on-mobile[data-limit="2"] > *:nth-child(-n+2),
-  .limit-on-mobile[data-limit="3"] > *:nth-child(-n+3),
-  .limit-on-mobile[data-limit="4"] > *:nth-child(-n+4),
-  .limit-on-mobile[data-limit="5"] > *:nth-child(-n+5),
-  .limit-on-mobile[data-limit="6"] > *:nth-child(-n+6),
-  .limit-on-mobile[data-limit="7"] > *:nth-child(-n+7),
-  .limit-on-mobile[data-limit="8"] > *:nth-child(-n+8),
-  .limit-on-mobile[data-limit="9"] > *:nth-child(-n+9),
-  .limit-on-mobile[data-limit="10"] > *:nth-child(-n+10) {
-    display: flex !important;
+
+  .image-container,
+  .skeleton-image {
+    height: 200px;
+  }
+
+  .product-name-promo {
+    font-size: 14px;
+    height: 42px;
+  }
+
+  .price-original-promo {
+    font-size: 13px;
+  }
+
+  .price-promo-promo {
+    font-size: 19px;
+  }
+
+  .skeleton-text {
+    height: 18px;
+    margin-bottom: 8px;
+    /* Ajuste de margem */
+  }
+
+  .skeleton-text.short {
+    height: 14px;
   }
 }

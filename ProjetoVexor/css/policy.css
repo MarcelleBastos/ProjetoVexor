@@ -1,98 +1,136 @@
-:root {
-    --primary-color: #007bff;
-    --secondary-color: #6c757d;
-    --text-color: #333;
-    --light-gray: #f8f9fa;
-    --border-color: #dee2e6;
-}
-
-body {
-    font-family: 'Arial', sans-serif;
-    /* Escolha uma fonte adequada */
-    color: var(--text-color);
-    background-color: #fff;
-    /* Fundo da página */
-}
-
 .privacy-policy-container {
-    padding-top: 40px;
-    padding-bottom: 60px;
+  padding-top: 40px;
+  padding-bottom: 60px;
 }
 
 .privacy-policy-header {
-    text-align: center;
-    margin-bottom: 40px;
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 .privacy-policy-header h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    /* Cor do título principal */
+  font-size: 40px;
+  font-weight: bold;
+  color: var(--secondary-bg-color);
 }
 
 .privacy-policy-header p {
-    font-size: 1.1rem;
-    color: var(--secondary-color);
+  font-size: 18px;
+  color: var(--muted-text-color);
 }
 
 .accordion-item {
-    border: 1px solid var(--border-color);
-    margin-bottom: 15px;
-    border-radius: 0.375rem;
-    /* Bootstrap's default border-radius */
+  border: 1px solid var(--border-color);
+  margin-bottom: 15px;
+  border-radius: 6px;
+  background-color: var(--primary-bg-color);
+  overflow: hidden;
 }
 
 .accordion-header button {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--primary-color);
-    /* Cor do título da seção no acordeão */
-    background-color: var(--light-gray);
-    /* Fundo do header do acordeão */
-    border: none;
-    width: 100%;
-    text-align: left;
-    padding: 1rem 1.25rem;
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--text-color);
+  background-color: transparent;
+  /* Cor de fundo do header do acordeão */
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 16px 20px;
+  transition: background-color 0.2s;
 }
 
 .accordion-header button:not(.collapsed) {
-    background-color: var(--primary-color);
-    color: white;
+  background-color: var(--secondary-bg-color);
+  color: white;
 }
 
 .accordion-header button:focus {
-    box-shadow: none;
+  box-shadow: none;
 }
 
+/* Estilo da seta do Bootstrap, ajustando cores para tema escuro */
 .accordion-header button::after {
-    /* Estilo da seta do Bootstrap */
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23007bff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  filter: grayscale(1) brightness(0.5);
+  /* Seta escura no tema claro */
+}
+
+[data-theme="dark"] .accordion-header button::after {
+  filter: invert(1) grayscale(1) brightness(2);
+  /* Seta clara no tema escuro */
 }
 
 .accordion-header button:not(.collapsed)::after {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  filter: none;
+  /* Seta padrão (branca) quando expandido e com fundo colorido */
 }
 
+
 .accordion-body {
-    padding: 1.25rem;
-    font-size: 1rem;
-    line-height: 1.6;
+  padding: 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted-text-color);
 }
 
 .accordion-body h5 {
-    color: var(--primary-color);
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
+  color: var(--text-color);
+  margin-top: 16px;
+  margin-bottom: 8px;
+  font-size: 18px;
 }
 
 .accordion-body ul {
-    padding-left: 20px;
+  padding-left: 20px;
+}
+
+.accordion-body ul li {
+  margin-bottom: 8px;
+  /* Espaçamento entre itens da lista */
 }
 
 .last-updated {
-    text-align: center;
-    margin-top: 30px;
-    font-style: italic;
-    color: var(--secondary-color);
+  text-align: center;
+  margin-top: 30px;
+  font-style: italic;
+  color: var(--muted-text-color);
+}
+
+@media (max-width: 576px) {
+  .privacy-policy-container {
+    padding-top: 24px;
+    padding-bottom: 40px;
+  }
+
+  .privacy-policy-header h1 {
+    font-size: 28px;
+  }
+
+  .privacy-policy-header p {
+    font-size: 14px;
+  }
+
+  .accordion-item {
+    margin-bottom: 12px;
+  }
+
+  .accordion-header button {
+    font-size: 16px;
+    padding: 12px 16px;
+  }
+
+  .accordion-body {
+    padding: 16px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .accordion-body h5 {
+    font-size: 15px;
+  }
+
+  .last-updated {
+    font-size: 13px;
+    margin-top: 24px;
+  }
 }

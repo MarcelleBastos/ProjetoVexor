@@ -17,9 +17,9 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
           </div>
 
-          <div class="col-lg-2 col-md-4 col-6">
+          <div class="col-lg-2 col-md-4 col-12 text-center text-lg-start">
             <h5 class="footer-title">Páginas</h5>
-            <ul class="footer-links">
+            <ul class="footer-links list-unstyled">
               <li><a href="index.html">Home</a></li>
               <li><a href="product.html">Produtos</a></li>
               <li><a href="index.html#promotion-grid">Promoções</a></li>
@@ -27,9 +27,9 @@ document.addEventListener("DOMContentLoaded", function () {
             </ul>
           </div>
 
-          <div class="col-lg-3 col-md-4 col-6">
+          <div class="col-lg-3 col-md-4 col-12 text-center text-lg-start">
             <h5 class="footer-title">Institucional</h5>
-            <ul class="footer-links">
+            <ul class="footer-links list-unstyled">
               <li><a href="policy-privacy.html">Política de Privacidade</a></li>
               <li><a href="delivery-policy.html">Política de Entregas</a></li>
               <li><a href="tracking.html">Rastrear Pedido</a></li>

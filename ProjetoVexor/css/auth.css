@@ -5,7 +5,6 @@ body.auth-page {
     background: var(--bg-color);
 }
 
-/* Fundo geral para as páginas de autenticação */
 .auth-page-background {
     position: fixed;
     top: 0;
@@ -14,7 +13,7 @@ body.auth-page {
     height: 100%;
     z-index: -1;
     overflow: hidden;
-    background-color: var(--bg-color); /* Cor base */
+    background-color: var(--bg-color);
 }
 
 .auth-page-background::before {
@@ -24,102 +23,86 @@ body.auth-page {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, rgba(var(--secondary-bg-color-rgb, 24, 115, 188), 0.1), rgba(var(--primary-bg-color-rgb, 255, 255, 255), 0) 70.71%),
-                linear-gradient(135deg, rgba(var(--secondary-bg-color-rgb, 24, 115, 188), 0.05), rgba(var(--primary-bg-color-rgb, 255, 255, 255), 0) 70.71%),
-                linear-gradient(225deg, rgba(var(--secondary-bg-color-rgb, 24, 115, 188), 0.1), rgba(var(--primary-bg-color-rgb, 255, 255, 255), 0) 70.71%),
-                linear-gradient(315deg, rgba(var(--secondary-bg-color-rgb, 24, 115, 188), 0.05), rgba(var(--primary-bg-color-rgb, 255, 255, 255), 0) 70.71%);
-    background-size: 200% 200%;
-    animation: animatedBackground 20s ease infinite;
-    opacity: 0.7;
+    background: radial-gradient(circle at top left, rgba(var(--secondary-bg-color-rgb), 0.1), transparent 40%),
+        radial-gradient(circle at bottom right, rgba(var(--accent-color-rgb), 0.1), transparent 40%);
+    animation: animatedAuthBackground 25s ease infinite;
 }
 
 [data-theme="dark"] .auth-page-background::before {
-    background: linear-gradient(45deg, rgba(var(--secondary-bg-color-rgb, 51, 144, 255), 0.15), transparent 70%),
-                linear-gradient(135deg, rgba(var(--secondary-bg-color-rgb, 51, 144, 255), 0.1), transparent 70%),
-                linear-gradient(225deg, rgba(var(--secondary-bg-color-rgb, 51, 144, 255), 0.15), transparent 70%),
-                linear-gradient(315deg, rgba(var(--secondary-bg-color-rgb, 51, 144, 255), 0.1), transparent 70%);
-    background-size: 250% 250%;
-    animation: animatedBackground 25s ease infinite;
-    opacity: 1;
+    background: radial-gradient(circle at top left, rgba(var(--secondary-bg-color-rgb), 0.15), transparent 50%),
+        radial-gradient(circle at bottom right, rgba(var(--accent-color-rgb), 0.15), transparent 50%);
+    animation: animatedAuthBackground 30s ease infinite alternate;
 }
 
+@keyframes animatedAuthBackground {
+    0% {
+        background-position: 0% 0%;
+    }
 
-@keyframes animatedBackground {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+    50% {
+        background-position: 100% 100%;
+    }
+
+    100% {
+        background-position: 0% 0%;
+    }
 }
 
 .auth-card {
     background-color: var(--primary-bg-color);
     border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 40px rgba(var(--text-color-rgb), 0.08);
     padding: 30px 35px;
-    max-width: 480px; /* Para login */
+    max-width: 480px;
     width: 100%;
-    margin: 20px auto; /* Adicionado para centralizar e dar margem */
-    position: relative; /* Para o z-index funcionar sobre o fundo */
+    margin: 20px auto;
+    position: relative;
     z-index: 1;
-    border: 1px solid rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
 }
 
 [data-theme="dark"] .auth-card {
-    background-color: rgba(var(--card-bg-dark-rgb, 44, 44, 44), 0.9); /* Fundo do card escuro com leve transparência */
+    background-color: rgba(var(--primary-bg-color-rgb), 0.9);
+    backdrop-filter: blur(10px);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid var(--border-color);
 }
 
 .auth-card-register {
-    max-width: 650px; /* Card de registro pode ser mais largo */
+    max-width: 650px;
 }
 
 
 .auth-title {
-    font-family: 'Russo One', 'Orbitron', sans-serif;
+    font-family: 'Orbitron', sans-serif;
     color: var(--secondary-bg-color);
-    font-size: clamp(28px, 5vw, 36px);
+    font-size: 32px;
     margin-bottom: 25px;
     text-align: center;
 }
 
-.auth-card .form-floating > .form-control,
+.auth-card .form-floating>.form-control,
 .auth-card .form-control,
 .auth-card .form-select {
-    background-color: var(--bg-color); /* Fundo dos inputs levemente diferente */
-    border-color: rgba(var(--muted-text-color-rgb, 108, 117, 125), 0.3);
+    background-color: var(--bg-color);
+    border-color: var(--border-color);
     color: var(--text-color);
+    font-size: 16px;
 }
-.auth-card .form-floating > .form-control:focus,
+
+.auth-card .form-floating>.form-control:focus,
 .auth-card .form-control:focus,
 .auth-card .form-select:focus {
     background-color: var(--bg-color);
-    color: var(--text-color);
-    border-color: var(--secondary-bg-color);
-    box-shadow: 0 0 0 3.2px rgba(var(--secondary-bg-color-rgb, 24, 115, 188), 0.25);
 }
-.auth-card .form-floating > label {
+
+.auth-card .form-floating>label {
     color: var(--muted-text-color);
-}
-[data-theme="dark"] .auth-card .form-floating > .form-control,
-[data-theme="dark"] .auth-card .form-control,
-[data-theme="dark"] .auth-card .form-select {
-    background-color: rgba(var(--card-bg-dark-rgb, 44, 44, 44), 0.7); /* Fundo dos inputs no tema dark */
-    border-color: rgba(var(--muted-text-color-rgb, 181, 181, 181), 0.4);
-    color: var(--text-color);
-}
-[data-theme="dark"] .auth-card .form-floating > .form-control:focus,
-[data-theme="dark"] .auth-card .form-control:focus,
-[data-theme="dark"] .auth-card .form-select:focus {
-    background-color: var(--card-bg-dark);
-    border-color: var(--secondary-bg-color);
-    box-shadow: 0 0 0 3.2px rgba(var(--secondary-bg-color-rgb, 51, 144, 255), 0.3);
-}
-[data-theme="dark"] .auth-card .form-floating > label {
-    color: var(--muted-text-color);
+    font-size: 16px;
 }
 
 .auth-card .btn-primary {
-    font-family: 'Russo One', sans-serif;
+    font-family: 'Orbitron', sans-serif;
     background-color: var(--secondary-bg-color);
     border-color: var(--secondary-bg-color);
     padding: 12px 20px;
@@ -128,38 +111,55 @@ body.auth-page {
     letter-spacing: 0.5px;
     transition: all 0.3s ease;
 }
+
 .auth-card .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(var(--secondary-bg-color-rgb, 24, 115, 188), 0.4);
+    box-shadow: 0 4px 15px rgba(var(--secondary-bg-color-rgb), 0.4);
+    filter: brightness(1.1);
 }
+
 .auth-card .btn-outline-secondary {
     padding: 12px 20px;
     font-size: 17px;
+    border-color: var(--muted-text-color);
+    color: var(--muted-text-color);
 }
+
+[data-theme="dark"] .auth-card .btn-outline-secondary {
+    border-color: var(--border-color);
+}
+
+.auth-card .btn-outline-secondary:hover {
+    background-color: var(--muted-text-color);
+    color: var(--bg-color);
+}
+
 
 .auth-card .link-primary {
     color: var(--secondary-bg-color);
     font-weight: 600;
 }
+
 .auth-card .link-primary:hover {
     text-decoration: underline !important;
 }
 
 /* Para a página de registro, os títulos das seções */
 .auth-card-register .section-title {
-    font-family: 'Russo One', sans-serif;
-    font-size: 18px; /* Menor que o título principal */
-    border-bottom-width: 3px; /* Borda mais grossa */
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px;
+    border-bottom-width: 2px;
     padding-bottom: 8px;
     margin-bottom: 24px;
 }
 
-/* Animações de entrada (pode usar as mesmas do index-modern.css) */
+/* Animações de entrada */
 .auth-card {
     opacity: 0;
     transform: translateY(40px) scale(0.98);
     animation: authCardEntry 0.7s 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
+
 @keyframes authCardEntry {
     to {
         opacity: 1;
@@ -172,16 +172,49 @@ body.auth-page {
         padding: 25px 20px;
         margin-top: 20px;
         margin-bottom: 20px;
+        border-radius: 12px;
     }
+
     .auth-title {
-        font-size: 28px;
+        font-size: 26px;
+        margin-bottom: 20px;
     }
+
     .auth-card .btn-primary,
     .auth-card .btn-outline-secondary {
-        font-size: 16px;
+        font-size: 15px;
         padding: 10px 15px;
     }
+
     .auth-card-register .section-title {
-        font-size: 17px;
+        font-size: 16px;
+        padding-bottom: 6px;
+        margin-bottom: 20px;
+    }
+
+    /* Ajustes form-floating para telas pequenas */
+    .form-floating>.form-control,
+    .form-floating>.form-select {
+        min-height: calc(48px + 2px);
+        height: calc(48px + 2px);
+        line-height: 1.25;
+        /* (font-size / line-height) */
+        padding: 16px 12px;
+    }
+
+    .form-floating>label {
+        padding: 16px 12px;
+        font-size: 14px;
+        /* Tamanho da label quando não flutuando */
+    }
+
+    .form-floating>.form-control:focus~label,
+    .form-floating>.form-control:not(:placeholder-shown)~label,
+    .form-floating>.form-select~label {
+        /* Label flutuante */
+        opacity: 0.65;
+        transform: scale(0.80) translateY(-8px) translateX(2px);
+        font-size: 12px;
+        /* Tamanho da label quando flutuando, opcional */
     }
 }

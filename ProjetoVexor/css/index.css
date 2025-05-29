@@ -1,16 +1,13 @@
-/* css/index-modern.css */
-
-/* --- HERO SECTION --- */
 .hero-section {
-  height: 90vh; /* Altura da viewport, pode ajustar */
-  min-height: 500px; /* Altura mínima para telas menores */
+  height: 90vh;
+  min-height: 500px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   color: #fff;
-  background-color: #111; /* Fallback se o vídeo não carregar */
+  background-color: #111;
 }
 
 .hero-video {
@@ -23,7 +20,7 @@
   min-height: 100%;
   transform: translate(-50%, -50%);
   z-index: 0;
-  object-fit: cover; /* Garante que o vídeo cubra a área */
+  object-fit: cover;
 }
 
 .hero-overlay {
@@ -32,62 +29,65 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(10, 20, 35, 0.7); /* Overlay escuro para legibilidade do texto */
-  /* Gradiente mais sutil: background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)); */
+  background: rgba(10, 20, 35, 0.7);
   z-index: 1;
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
+  text-align: center;
+  /* Para centralizar conteúdo */
 }
 
 .hero-title {
-  font-family: 'Russo One', 'Orbitron', sans-serif; /* Fonte mais gamer */
+  font-family: 'Orbitron', sans-serif;
   font-weight: 700;
-  font-size: clamp(2.5rem, 8vw, 5rem); /* Tamanho responsivo */
+  font-size: 64px;
   text-transform: uppercase;
   letter-spacing: 2px;
   text-shadow: 0 0 10px rgba(0, 183, 255, 0.5), 0 0 20px rgba(0, 183, 255, 0.3);
 }
 
 .hero-subtitle {
-  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  font-size: 22px;
   font-weight: 300;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
   opacity: 0.9;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .hero-cta {
-  font-family: 'Russo One', sans-serif;
+  font-family: 'Orbitron', sans-serif;
   background-color: var(--secondary-bg-color);
   border-color: var(--secondary-bg-color);
   color: #fff;
   padding: 12px 30px;
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-size: 18px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  border-radius: 50px; /* Botão mais arredondado */
+  border-radius: 25px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(var(--secondary-bg-color-rgb, 24, 115, 188), 0.4);
+  box-shadow: 0 4px 15px rgba(var(--secondary-bg-color-rgb), 0.4);
 }
 
 .hero-cta:hover {
   background-color: #fff;
   color: var(--secondary-bg-color);
-  border-color: var(--secondary-bg-color);
   transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 6px 20px rgba(var(--secondary-bg-color-rgb, 24, 115, 188), 0.6);
+  box-shadow: 0 6px 20px rgba(var(--secondary-bg-color-rgb), 0.6);
 }
+
 [data-theme="dark"] .hero-cta {
-    box-shadow: 0 4px 15px rgba(var(--secondary-bg-color-rgb, 51, 144, 255), 0.5);
+  box-shadow: 0 4px 15px rgba(var(--secondary-bg-color-rgb), 0.5);
 }
+
 [data-theme="dark"] .hero-cta:hover {
-    color: var(--secondary-bg-color);
-    box-shadow: 0 6px 20px rgba(var(--secondary-bg-color-rgb, 51, 144, 255), 0.7);
+  color: var(--secondary-bg-color);
+  /* Cor do texto no hover para tema escuro */
+  box-shadow: 0 6px 20px rgba(var(--secondary-bg-color-rgb), 0.7);
 }
 
 
@@ -97,12 +97,16 @@
   transform: translateY(30px);
   animation: fadeInUp 0.8s ease-out forwards;
 }
+
 .animated-button {
   opacity: 0;
   transform: scale(0.8);
-  animation: scaleUp 0.6s ease-out 0.8s forwards; /* Delay para aparecer depois do texto */
+  animation: scaleUp 0.6s ease-out 0.8s forwards;
 }
-.animated-text.delay-1 { animation-delay: 0.4s; }
+
+.animated-text.delay-1 {
+  animation-delay: 0.4s;
+}
 
 @keyframes fadeInUp {
   to {
@@ -110,6 +114,7 @@
     transform: translateY(0);
   }
 }
+
 @keyframes scaleUp {
   to {
     opacity: 1;
@@ -119,84 +124,107 @@
 
 /* --- CARROSSEL MODERNIZADO --- */
 .carousel-section {
-    margin-top: 0; /* Remove margem se a hero section já der espaço */
-    margin-bottom: 40px; /* Espaço abaixo do carrossel */
+  margin-top: 0;
+  margin-bottom: 40px;
 }
-#slider { /* Remove max-width para ocupar a largura da seção */
-    max-width: none;
-    margin: 0;
+
+#slider {
+  max-width: none;
+  margin: 0;
 }
+
 .carousel-inner img {
-  height: 60vh; /* Altura do banner responsiva */
-  min-height: 400px; /* Altura mínima */
+  height: 60vh;
+  min-height: 400px;
   max-height: 550px;
   object-fit: cover;
-  border-radius: 0; /* Remove borda arredondada se for full-width */
+  border-radius: 0;
 }
+
 .modern-indicators button {
   width: 12px;
   height: 12px;
-  border-radius: 50%;
+  border-radius: 6px;
   background-color: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(0,0,0,0.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   margin: 0 5px;
 }
+
 .modern-indicators button.active {
   background-color: var(--secondary-bg-color);
   border-color: var(--secondary-bg-color);
 }
+
 [data-theme="dark"] .modern-indicators button.active {
   background-color: var(--secondary-bg-color);
 }
+
 .modern-control {
   width: 5%;
   opacity: 0.7;
 }
+
 .modern-control:hover {
   opacity: 1;
 }
+
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   border-radius: 50%;
-  padding: 15px; /* Aumenta o padding para o ícone parecer maior */
-  background-size: 60% 60%; /* Ajusta o tamanho do ícone SVG dentro do fundo */
+  padding: 15px;
+  background-size: 60% 60%;
 }
+
 .carousel-caption {
-    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
-    padding: 20px;
-    bottom: 0; /* Alinha na base */
-    left: 0;
-    right: 0;
-    text-align: left !important; /* Força alinhamento */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+  padding: 20px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  text-align: left !important;
 }
+
 .carousel-caption h5 {
-    font-family: 'Russo One', sans-serif;
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 28px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
+
 .carousel-caption p {
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+  font-size: 16px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 
 /* --- SEÇÃO "POR QUE ESCOLHER A VEXOR?" --- */
 .why-vexor-section {
-  background-color: var(--primary-bg-color); /* Fundo sutilmente diferente */
+  padding: 40px 0;
+  /* Adicionado padding */
 }
+
 [data-theme="dark"] .why-vexor-section {
-  background-color: #1a1f25; /* Um tom um pouco diferente do card-bg-dark */
+  background-color: var(--bg-color);
+  /* Ajuste para tema escuro */
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
 }
+
 .section-title-modern {
-  font-family: 'Russo One', 'Orbitron', sans-serif;
-  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 36px;
   color: var(--text-color);
   margin-bottom: 16px;
   position: relative;
   display: inline-block;
   padding-bottom: 10px;
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
 }
+
 .section-title-modern::after {
   content: '';
   position: absolute;
@@ -208,46 +236,33 @@
   background-color: var(--secondary-bg-color);
   border-radius: 2px;
 }
+
 .vexor-highlight {
+  font-family: 'Orbitron', sans-serif;
   color: var(--secondary-bg-color);
 }
+
 .why-card {
   background-color: var(--primary-bg-color);
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  box-shadow: 0 5px 15px rgba(var(--text-color-rgb), 0.05);
+  padding: 20px;
 }
+
 [data-theme="dark"] .why-card {
-  background-color: var(--card-bg-dark);
-  border-color: rgba(255,255,255,0.1);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-.why-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 25px var(--card-shadow-light);
-  border-left: 4px solid var(--secondary-bg-color);
-}
-[data-theme="dark"] .why-card:hover {
-   box-shadow: 0 10px 25px var(--card-shadow-dark);
-}
-.why-icon i {
-  font-size: 40px;
-  color: var(--secondary-bg-color);
-}
-.why-card h5 {
-  font-weight: 600;
-  color: var(--text-color);
-}
-.why-card p {
-  font-size: 15px;
-  color: var(--muted-text-color);
+  background-color: var(--primary-bg-color);
+  /* Card escuro um pouco mais claro que o fundo */
+  border-color: var(--border-color);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  /* Sombra mais visível no escuro */
 }
 
 /* --- SEÇÃO DE PROMOÇÕES --- */
 .promotion-section {
-    padding-top: 40px;
-    padding-bottom: 40px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 /* --- ANIMAÇÕES DE SCROLL --- */
@@ -256,14 +271,31 @@
   transform: translateY(50px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
+
 .animate-on-scroll.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
-.animate-on-scroll.delay-1 { transition-delay: 0.1s; }
-.animate-on-scroll.delay-2 { transition-delay: 0.2s; }
-.animate-on-scroll.delay-3 { transition-delay: 0.3s; }
-.animate-on-scroll.delay-4 { transition-delay: 0.4s; }
+
+.animate-on-scroll.delay-1 {
+  transition-delay: 0.1s;
+}
+
+.animate-on-scroll.delay-2 {
+  transition-delay: 0.2s;
+}
+
+.animate-on-scroll.delay-3 {
+  transition-delay: 0.3s;
+}
+
+.animate-on-scroll.delay-4 {
+  transition-delay: 0.4s;
+}
+
+.animate-on-scroll.delay-5 {
+  transition-delay: 0.5s;
+}
 
 
 /* Responsividade para Hero e Carousel */
@@ -272,82 +304,97 @@
     height: 70vh;
     min-height: 400px;
   }
+
   .hero-title {
-    font-size: clamp(2rem, 10vw, 3rem);
+    font-size: 40px;
   }
+
   .hero-subtitle {
-    font-size: clamp(1rem, 4vw, 1.2rem);
+    font-size: 18px;
   }
+
   .hero-cta {
     padding: 10px 25px;
-    font-size: clamp(0.9rem, 3vw, 1rem);
+    font-size: 16px;
   }
+
   .carousel-inner img {
     height: 45vh;
     min-height: 250px;
   }
+
   .carousel-caption {
-      padding: 15px;
+    padding: 15px;
+  }
+
+  .section-title-modern {
+    font-size: 28px;
   }
 }
 
 /* --- SEÇÃO DE GAMIFICAÇÃO: ESCOLHA SEU ESTILO --- */
 .game-style-selection-section {
-  padding: 60px 0; /* Ajuste o padding conforme necessário */
-  background-color: var(--bg-color); /* Fundo base da página */
-  min-height: 70vh; /* Ocupa uma boa parte da tela inicial */
+  padding: 60px 0;
+  background-color: var(--bg-color);
+  min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 [data-theme="dark"] .game-style-selection-section {
-   background: linear-gradient(135deg, #1a1f25 0%, #2c3e50 100%); /* Gradiente sutil para o fundo no dark mode */
+  background: linear-gradient(135deg, #121212 0%, #1A1A1A 100%);
 }
 
 .game-style-title {
-  font-family: 'Russo One', 'Orbitron', sans-serif;
+  font-family: 'Orbitron', sans-serif;
   color: var(--secondary-bg-color);
   text-transform: uppercase;
-  margin-bottom: 16px; /* Mais espaço */
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  margin-bottom: 16px;
+  text-shadow: 1px 1px 2px rgba(var(--text-color-rgb), 0.1);
+  font-size: 32px;
 }
+
 [data-theme="dark"] .game-style-title {
-  text-shadow: 0 0 8px rgba(var(--secondary-bg-color-rgb, 51, 144, 255), 0.5);
+  text-shadow: 0 0 8px rgba(var(--secondary-bg-color-rgb), 0.5);
 }
 
 .game-style-subtitle {
   color: var(--muted-text-color);
-  font-size: 18px; /* Aumentado */
+  font-size: 18px;
   max-width: 750px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 30px;
 }
 
 .game-style-card {
   background-color: var(--primary-bg-color);
   border-radius: 15px;
   padding: 30px 20px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 25px rgba(var(--text-color-rgb), 0.08);
   transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid transparent; /* Borda inicial transparente */
-  height: 100%; /* Para o d-flex align-items-stretch funcionar */
+  border: 2px solid var(--border-color);
+  height: 100%;
 }
+
 [data-theme="dark"] .game-style-card {
-  background-color: var(--card-bg-dark);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-  border: 2px solid rgba(255,255,255,0.1);
+  background-color: var(--primary-bg-color);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--border-color);
 }
 
 .game-style-card:hover {
-  transform: translateY(-12px) scale(1.03); /* Efeito de "levantar" e aumentar um pouco mais */
-  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(var(--text-color-rgb), 0.12);
   border-color: var(--secondary-bg-color);
 }
+
 [data-theme="dark"] .game-style-card:hover {
-  box-shadow: 0 15px 35px rgba(var(--secondary-bg-color-rgb, 51, 144, 255), 0.3);
+  box-shadow: 0 15px 35px rgba(var(--secondary-bg-color-rgb), 0.2);
 }
 
 .game-style-icon {
@@ -356,70 +403,194 @@
   margin-bottom: 20px;
   transition: transform 0.3s ease;
 }
+
 .game-style-card:hover .game-style-icon {
-  transform: scale(1.2) rotate(-5deg); /* Ícone também reage */
+  transform: scale(1.2) rotate(-5deg);
 }
 
 .game-style-card-title {
-  font-family: 'Russo One', sans-serif;
+  font-family: 'Orbitron', sans-serif;
   font-size: 20px;
   color: var(--text-color);
   margin-bottom: 10px;
   text-transform: uppercase;
 }
-[data-theme="dark"] .game-style-card-title {
-  color: var(--text-color);
-}
+
 .game-style-card:hover .game-style-card-title {
-    color: var(--secondary-bg-color);
+  color: var(--secondary-bg-color);
 }
 
 .game-style-card-desc {
   font-size: 14px;
   color: var(--muted-text-color);
   line-height: 1.6;
-  flex-grow: 1; /* Faz a descrição ocupar o espaço, ajudando no alinhamento */
+  flex-grow: 1;
 }
 
-/* Cores específicas por card (opcional, mas adiciona ao "animal") */
-.fps-card:hover { border-color: #dc3545; /* Vermelho FPS */}
-.fps-card:hover .game-style-icon, .fps-card:hover .game-style-card-title { color: #dc3545; }
-
-.moba-card:hover { border-color: #fd7e14; /* Laranja MOBA */}
-.moba-card:hover .game-style-icon, .moba-card:hover .game-style-card-title { color: #fd7e14; }
-
-.rts-card:hover { border-color: #20c997; /* Verde RTS */}
-.rts-card:hover .game-style-icon, .rts-card:hover .game-style-card-title { color: #20c997; }
-
-.versatile-card:hover { border-color: #6f42c1; /* Roxo Versátil */}
-.versatile-card:hover .game-style-icon, .versatile-card:hover .game-style-card-title { color: #6f42c1; }
-
-
-/* Ajustes de Responsividade para a Seção de Gamificação */
-@media (max-width: 991px) {
-  .game-style-card {
-    padding: 25px 15px;
-  }
-  .game-style-icon {
-    font-size: 40px;
-    margin-bottom: 15px;
-  }
-  .game-style-card-title {
-    font-size: 18px;
-  }
-  .game-style-card-desc {
-    font-size: 13px;
-  }
+/* Cores específicas por card */
+.fps-card:hover {
+  border-color: #dc3545;
 }
+
+.fps-card:hover .game-style-icon,
+.fps-card:hover .game-style-card-title {
+  color: #dc3545;
+}
+
+.moba-card:hover {
+  border-color: #fd7e14;
+}
+
+.moba-card:hover .game-style-icon,
+.moba-card:hover .game-style-card-title {
+  color: #fd7e14;
+}
+
+.rts-card:hover {
+  border-color: #20c997;
+}
+
+.rts-card:hover .game-style-icon,
+.rts-card:hover .game-style-card-title {
+  color: #20c997;
+}
+
+.versatile-card:hover {
+  border-color: #6f42c1;
+}
+
+.versatile-card:hover .game-style-icon,
+.versatile-card:hover .game-style-card-title {
+  color: #6f42c1;
+}
+
 @media (max-width: 767px) {
   .game-style-selection-section {
     padding: 40px 0;
-    min-height: auto; /* Remove altura mínima em mobile */
+    min-height: auto;
   }
+
   .game-style-title {
-    font-size: clamp(24px, 7vw, 32px);
+    font-size: 28px;
   }
+
   .game-style-subtitle {
     font-size: 16px;
-    margin-bottom: 30px; /* Menos margem */
+    margin-bottom: 30px;
   }
+}
+
+@media (max-width: 576px) {
+  .hero-section {
+    height: 60vh;
+    min-height: 350px;
+  }
+
+  .hero-title {
+    font-size: 28px;
+    letter-spacing: 1px;
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+  }
+
+  .hero-cta {
+    padding: 10px 22px;
+    font-size: 14px;
+  }
+
+  .carousel-inner img {
+    height: 35vh;
+    min-height: 200px;
+  }
+
+  .carousel-caption {
+    padding: 12px;
+  }
+
+  .carousel-caption h5 {
+    font-size: 20px;
+  }
+
+  .carousel-caption p {
+    font-size: 13px;
+  }
+
+  .modern-indicators button {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    margin: 0 4px;
+  }
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    padding: 12px;
+  }
+
+  .section-title-modern {
+    font-size: 24px;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+  }
+
+  .section-title-modern::after {
+    width: 60px;
+    height: 3px;
+  }
+
+  .why-vexor-section {
+    padding: 40px 0;
+  }
+
+  .why-vexor-section .lead {
+    font-size: 15px;
+  }
+
+  .why-card {
+    padding: 18px;
+  }
+
+  .why-icon i {
+    font-size: 32px;
+  }
+
+  .why-card h5 {
+    font-size: 16px;
+  }
+
+  .why-card p {
+    font-size: 13px;
+  }
+
+  .game-style-selection-section {
+    padding: 30px 0;
+  }
+
+  .game-style-title {
+    font-size: 22px;
+  }
+
+  .game-style-subtitle {
+    font-size: 14px;
+    margin-bottom: 25px;
+  }
+
+  .game-style-card {
+    padding: 20px 12px;
+  }
+
+  .game-style-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+  }
+
+  .game-style-card-title {
+    font-size: 15px;
+  }
+
+  .game-style-card-desc {
+    font-size: 12px;
+  }
+}
